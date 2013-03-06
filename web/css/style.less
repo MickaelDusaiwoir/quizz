@@ -1,0 +1,475 @@
+@import "grid.less";
+
+
+@font-face {
+  font-family: 'fontello';
+  src: url("../font/fontello.eot?76878236");
+  src: url("../font/fontello.eot?76878236#iefix") format('embedded-opentype'), url("../font/fontello.woff?76878236") format('woff'), url("../font/fontello.ttf?76878236") format('truetype'), url("../font/fontello.svg?76878236#fontello") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?94430443#fontello') format('svg');
+  }
+}
+
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: 'fontello';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+  line-height: 1em;
+  margin-left: 0.2em;
+}
+
+body{    
+    font: normal 15px Helvetica, Arial, Sans-Serif;
+    line-height: 1.5;
+}
+
+#layout_game {
+    margin: 0 auto;
+    width: 960px;
+}
+
+.icon-trash:before { 
+    content: '\e729'; 
+    font-size: 1.4em;
+    margin-left: 0.25em;
+    color: #666;
+}
+
+.icon-pencil:before 
+{ 
+    content: '\270e'; 
+    font-size: 1.4em;
+    color: #666;
+} 
+
+
+.supprimer, .modifier {
+    text-decoration: none;
+}
+
+.supprimer p, .modifier p {
+    display: none;
+}
+
+#container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, p {
+    overflow : hidden;
+}
+
+.no_Show {
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+
+.erreur {
+    background-color: #fcc;
+    color: #bb0000;
+    text-align: center;
+    padding: 0.25em 0;
+    margin: 0.25em 0;
+}
+
+
+.success {
+    background-color: #ada;
+    color: #070;
+    font-size: 1.15em;
+    text-align: center;
+    padding: 0.4em 0;
+    margin: 0 auto 1em auto;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+//////////////////////////////////////////////////////////////////////////////// general admin
+
+#layout_admin {
+    background: url('../img/fondB.png') repeat;
+    margin: 0;
+}
+
+#layout_admin #admin_menu ul {
+    overflow: hidden;
+    .column(7);
+    display: block;
+    margin: 0.5em auto 2em auto;
+    padding: 0;
+}
+
+#admin_menu li {
+    background-color: #f0f0f0;
+    background-image: -webkit-gradient(linear,left top, left bottom,from(#fefefe), color-stop(0.5,#f0f0f0), color-stop(0.51, #e6e6e6));
+    background-image: -moz-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    background-image: -o-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    background-image: -ms-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    background-image: linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);	
+    border-right: 1px solid rgba(9, 9, 9, 0.125);
+    box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    -moz-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    -webkit-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;	
+    position:relative;	
+    float: left;
+    list-style: none;
+}
+
+#admin_menu li:after {	
+    content:'.';
+    text-indent:-9999px;
+    overflow:hidden;
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:1;
+    opacity:0;	
+    background-image:-webkit-gradient(linear, left top, right top, from(rgba(168,168,168,0.5)),color-stop(0.5,rgba(168,168,168,0)), to(rgba(168,168,168,0.5)));
+    background-image:-moz-linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+    background-image:-o-linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+    background-image:-ms-linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+    background-image:linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));	
+    box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -moz-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -webkit-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;	
+    -moz-transition:0.25s all;
+    -webkit-transition:0.25s all;
+    -o-transition:0.25s all;
+    transition:0.25s all;
+}
+
+#admin_menu li:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+#admin_menu li:first-child:after, #admin_menu li.selected:first-child:after {
+    box-shadow:1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -moz-box-shadow:1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -webkit-box-shadow:1px 0 0 #a3a3a3,2px 0 0 #fff;	
+    border-radius:4px 0 0 4px;
+}
+
+#admin_menu li:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+
+#admin_menu li:last-child:after, #admin_menu li.selected:last-child:after {
+    box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
+    -moz-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
+    -webkit-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;	
+    border-radius:0 4px 4px 0;
+}
+
+#admin_menu li:hover:after, #admin_menu li.selected:after, #admin_menu li:target:after {
+    opacity:1;
+}
+
+#admin_menu:hover li.selected:after, #admin_menu:hover li:target:after {
+	opacity:0;
+}
+
+#admin_menu li.selected:hover:after, #admin_menu li:target:hover:after {
+	opacity:1 !important;
+}
+
+#admin_menu li a {
+	color: #5d5d5d;
+	display: inline-block;
+	font: 20px/1 Lobster,Arial,sans-serif;
+	padding: 12px 35px 14px;
+	position: relative;
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+	z-index:2;
+	text-decoration:none !important;
+	white-space:nowrap;
+}
+
+#admin_menu a.homeIcon {
+	background:url('../img/home.png') no-repeat center center;
+	display: block;
+	overflow: hidden;
+	padding-left: 12px;
+	padding-right: 12px;
+	text-indent: -9999px;
+	width: 16px;
+}
+
+#addUser h2, #listUsers h2, #addUser form, #listUsers table, #updateUser h2, #updateUser form, #addQuestion h2, #addQuestion form {
+    background: url('../img/fondG.png') repeat;
+}
+
+#addUser h2, #listUsers h2, #updateUser h2, #addQuestion h2 {
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////// PAGE USERS
+
+.success.users {
+    margin-top: -0.66em;
+}
+
+#addUser, #listUsers {
+    .column(12);
+    margin: 0 auto;
+}
+
+#addUser form, #addUser h2 {
+    .column(8);
+    display: block;
+    margin: 0 auto;
+}
+
+#addUser h2 {
+    padding: 0.5em 0;
+    text-align: center;
+}
+
+#addUser form {
+    font-size: 1.1em;
+    //padding: 0 1em;
+}
+
+#addUser fieldset {
+    .column(6);
+    display: block;
+    margin: 0 auto;
+    border: none;
+    padding: 0;
+}
+
+#addUser label {
+    .column(2);
+    margin: 1em 0;
+}
+
+#addUser input {
+    .column(4);
+    margin: 0;
+    padding: 0.5em 0.25em;
+    box-shadow: 0px 0px 1px #303030;
+}
+
+#addUser input[type=submit] {
+    padding: 0.2em 0.5em;
+    margin: 0.5em 0 1.5em 8.65em;
+    font-size: 1.05em;
+    box-shadow: none;
+}
+
+#listUsers table, #listUsers h2 {
+    .column(8);
+    display: block;
+    margin: 0 auto;
+}
+
+#listUsers h2 {
+    text-align: center;
+    margin-top: 2em;
+    padding: 0.5em 0;
+}
+
+#listUsers table {
+    padding: 1em 0;
+    text-align: left;
+}
+
+#listUsers thead, #listUsers tbody {
+    .column(7);
+    display: block;
+    margin: 0 auto 0.3em auto;
+}
+
+#listUsers td {
+    padding: 0.25em 0 0.25em 0.4em;
+}
+
+#listUsers td:first-child, #listUsers th:first-child {
+    .column(2);
+    margin-left: 0;
+}
+
+#listUsers td:nth-child(2), #listUsers th:nth-child(2) {
+    .column(4);
+    margin: 0;
+}
+
+#listUsers th:last-child {
+    .column(1);
+    margin: 0;
+    text-indent: -9999px;
+}
+
+#listUsers td:last-child {
+    .column(1);
+    padding-left: 0;
+    margin: 0;
+}
+
+#listUsers td:last-child a {
+    width: 2em;
+    margin: 0;
+}
+
+#listUsers tr {    
+    .column(7);
+    display: block;
+    margin: 0;
+}
+
+#listUsers tbody tr:nth-child(even) {
+    background-color: rgb(245,245,245);
+    border: 1px solid rgba(220,220,220,1);
+}
+
+#listUsers tbody tr:nth-child(odd) {
+    background-color: rgb(255,255,255);
+    border: 1px solid rgba(220,220,220,1);
+}
+
+
+//////////////////////////////////////////////////////////////////////// page login
+
+#login form{
+    .column(5);
+    display: block;
+    margin: 25% auto 0 auto;
+    padding: 1.5em;
+    background: url('../img/fondG.png') repeat;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#login label {
+    .column(2);
+    margin: 0;
+}
+
+#login input {
+    .column(3);
+    margin: 0.5em 0;
+    padding: 0.3em;    
+    box-shadow: 0px 0px 1px #303030;
+}
+
+#login input[type=submit] {
+    margin-left: 10.8em;    
+    box-shadow: none;
+}
+
+///////////////////////////////////////////////////////////////////////   PAGE UPDATE USER
+
+#updateUser {
+   .column(12);
+    margin: 0 auto;
+}
+
+#updateUser form, #updateUser h2 {
+    .column(6);
+    display: block;
+    margin: 0 auto;
+}
+
+#updateUser h2 {
+    padding: 0.5em 0.747em 0.5em 0.72em;
+    text-align: center;
+}
+
+#updateUser form {
+    font-size: 1.1em;
+    padding: 0 1em;
+}
+
+#updateUser label {
+    .column(2);
+    margin: 1em 0;
+}
+
+#updateUser input {
+    .column(4);
+    margin: 0;
+    padding: 0.5em 0.25em;
+    box-shadow: 0px 0px 1px #303030;
+}
+
+#updateUser input[type=submit] {
+    padding: 0.2em 0.5em;
+    margin: 0.5em 0 1.5em 8.65em;
+    font-size: 1.05em;
+    box-shadow: none;
+}
+
+///////////////////////////////////////////////////////////////  Page question
+
+#addQuestion {
+    .column(12);
+    margin: 0 auto;
+}
+
+#addQuestion form, #addQuestion h2 {
+    .column(6);
+    display: block;
+    margin: 0 auto;
+}
+
+#addQuestion h2 {
+    padding: 0.5em 0.747em 0.5em 0.72em;
+    text-align: center;
+}
+
+#addQuestion form {
+    font-size: 1.1em;
+    padding: 0 1em;
+}
+
+#addQuestion label {
+    .column(2);
+    margin: 1em 0;
+    font-weight: bold;
+}
+
+#addQuestion input, #addQuestion textarea {
+    .column(4);
+    margin: 0;
+    padding: 0.5em 0.25em;
+    box-shadow: 0px 0px 1px #303030;
+}
+
+#addQuestion textarea {
+    vertical-align: top;
+    margin-top: 1em;
+    resize: vertical;
+    height: 5em;
+}
+
+#addQuestion input[type=submit] {
+    padding: 0.2em 0.5em;
+    margin: 0.5em 0 1.5em 8.65em;
+    font-size: 1.05em;
+    box-shadow: none;
+}

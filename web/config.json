@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "glyphs": [
+    {
+      "search": [
+        "pencil",
+        "write",
+        "reply",
+        "edit"
+      ],
+      "code": 9998,
+      "from": 9998,
+      "uid": "d35a1d35efeb784d1dc9ac18b9b6c2b6",
+      "css": "pencil",
+      "orig_css": "pencil",
+      "orig_code": 9998,
+      "src": "fontawesome"
+    },
+    {
+      "search": [
+        "trash",
+        "delete"
+      ],
+      "code": 59177,
+      "from": 59177,
+      "uid": "f48ae54adfb27d8ada53d0fd9e34ee10",
+      "css": "trash",
+      "orig_css": "trash",
+      "orig_code": 59177,
+      "src": "fontawesome"
+    }
+  ]
+}
