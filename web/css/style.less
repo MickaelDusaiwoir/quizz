@@ -215,11 +215,12 @@ h1, h2, h3, h4, h5, p {
 	width: 16px;
 }
 
-#addUser h2, #listUsers h2, #addUser form, #listUsers table, #updateUser h2, #updateUser form, #addQuestion h2, #addQuestion form {
+#addUser h2, #listUsers h2, #addUser form, #listUsers table, #updateUser h2, #updateUser form, #addQuestion h2, #addQuestion form, 
+#listQuest h2, #listQuest ul, #listQuest p {
     background: url('../img/fondG.png') repeat;
 }
 
-#addUser h2, #listUsers h2, #updateUser h2, #addQuestion h2 {
+#addUser h2, #listUsers h2, #updateUser h2, #addQuestion h2, #addQuestion h2, #listQuest h2 {
     -moz-border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0;
@@ -426,25 +427,31 @@ h1, h2, h3, h4, h5, p {
 
 ///////////////////////////////////////////////////////////////  Page question
 
-#addQuestion {
+#addQuestion, #listQuest {
     .column(12);
     margin: 0 auto;
 }
 
 #addQuestion form, #addQuestion h2 {
-    .column(6);
+    .column(8);
     display: block;
     margin: 0 auto;
 }
 
+#addQuestion fieldset {
+    .column(6);
+    display: block;
+    margin: 0 auto;
+    border: none;
+}
+
 #addQuestion h2 {
-    padding: 0.5em 0.747em 0.5em 0.72em;
+    padding: 0.5em 0em;
     text-align: center;
 }
 
 #addQuestion form {
     font-size: 1.1em;
-    padding: 0 1em;
 }
 
 #addQuestion label {
@@ -469,7 +476,85 @@ h1, h2, h3, h4, h5, p {
 
 #addQuestion input[type=submit] {
     padding: 0.2em 0.5em;
-    margin: 0.5em 0 1.5em 8.65em;
+    margin: 0.5em 0 0.5em 8.65em;
     font-size: 1.05em;
     box-shadow: none;
+}
+
+#addQuestion p {
+    margin: 0.35em 0 0.5em 0;
+    padding: 0.25em 0;
+    background-color: #fcc;
+    color: #bb0000;
+    text-align: center;
+}
+
+#listQuest h2, #listQuest p {
+    .column(8);
+    display: block;
+    margin: 2em auto 0 auto;
+    padding: 0.5em 0em;
+    text-align: center;
+}
+
+#listQuest h2 {
+    padding-bottom: 0.8em;
+}
+
+#listQuest p {
+    margin: 0 auto;
+    font-size: 1.2em;
+}
+
+#listQuest ul {
+    .column(8);
+    display: block;
+    margin: 0 auto 1em auto;
+    padding: 0 0 1em 0;
+}
+
+#listQuest li  {
+    .column(7);
+    display: block;
+    margin: 0 auto 1em auto;
+    padding-bottom: 1em;
+    border-bottom: 1px dashed #999;
+}
+
+#listQuest li:last-child {
+    border: none;
+}
+
+#listQuest li ul, #listQuest li p {
+    .column(6);
+    display: block;
+    margin: 1em auto;
+    padding: 0;
+}
+
+#listQuest li p {
+    text-align: left;
+    margin: 0 auto;
+}
+
+#listQuest li p:first-child {
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+#listQuest li ul li {
+    .column(2);
+    display: inline-block;
+    margin: 0;
+    padding: 0 1em 0 0;
+    border: none;
+}
+
+#listQuest li ul  li:last-child {
+    padding: 0;
+}
+
+#listQuest em {
+    color: rgb(50,130,50);
+    margin-left: 1em;
 }

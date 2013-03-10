@@ -22,7 +22,8 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function callBack($data) {
+    public function callBack($data) 
+    {
         $this->load->model('M_Quizz');
         $this->load->helper('form');
 
@@ -30,6 +31,8 @@ class Admin extends CI_Controller {
             case 'users' :
                 $dataListe['donnees'] = $this->M_Quizz->getListUsers();
                 break;
+            case 'question' :
+                $dataListe['donnees'] = $this->M_Quizz->getListQuestion();
         }
 
         $dataListe['msg'] = $data['msg'];
@@ -141,25 +144,25 @@ class Admin extends CI_Controller {
         $this->load->helper('form');
         $data = array('msg' => null, 'display' => 'users', 'title' => 'Utilisateur', 'erreur' => null);
         
-        if (!$name = $this->input->post('name'))
+        if ( !$name = $this->input->post('name') )
             $erreur['name'] = TRUE;
 
-        if (!$pwd = $this->input->post('pwd'))
+        if ( !$pwd = $this->input->post('pwd') )
             $erreur['pwd'] = TRUE;
         else
             $pwd = sha1($pwd);
 
-        if (!$mail = $this->input->post('mail'))
+        if ( !$mail = $this->input->post('mail') )
             $erreur['mail'] = TRUE;
         
         $id = $this->input->post('id_user');
         
-        if ($name !== '' && $pwd !== '' && $mail !== '') 
+        if ( $name !== '' && $pwd !== '' && $mail !== '' ) 
         {
             $erreur = FALSE;
             $dataUser = array('name' => $name, 'pwd' => $pwd, 'mail' => $mail, 'id' => $id);
 
-            if ($this->M_Quizz->updateUser($dataUser)) {
+            if ( $this->M_Quizz->updateUser($dataUser) ) {
                 $data['msg'] = '<p class="success users">La modification c\'est bien passée</p>';
                 $this->callBack($data);
             }
@@ -184,8 +187,8 @@ class Admin extends CI_Controller {
         $data = array('msg' => null, 'display' => 'users', 'title' => 'Utilisateur', 'erreur' => null);
         $id = $this->uri->segment(3);
 
-        if ($this->M_Quizz->removeUser($id)) {
-            if ($this->session->userdata('id_user') == $id) {
+        if ( $this->M_Quizz->removeUser($id) ) {
+            if ( $this->session->userdata('id_user' ) == $id) {
                 $this->disconnect();
             }
 
@@ -203,7 +206,7 @@ class Admin extends CI_Controller {
         $this->load->model('M_Quizz');
         $this->load->helper('form');
         
-        if (!$this->session->userdata('logged_in')) {
+        if ( !$this->session->userdata('logged_in') ) {
             redirect('admin/login');
         }
 
@@ -212,6 +215,41 @@ class Admin extends CI_Controller {
         $dataLayout['vue'] = $this->load->view('question', $dataListe, true);
         $this->load->view('layoutAdmin', $dataLayout);
     }
+    
+    public function addQuestion ()
+    {
+        $data = array('display' => 'question', 'title' => 'Question', 'msg' => null, 'erreur' => null);
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('quest',   ' Question',        'required|encode_php_tags|xss_clean');
+        $this->form_validation->set_rules('choice1', ' Proposition N°1', 'required|encode_php_tags|xss_clean');
+        $this->form_validation->set_rules('choice2', ' Proposition N°2', 'required|encode_php_tags|xss_clean');
+        $this->form_validation->set_rules('choice3', ' Proposition N°3', 'required|encode_php_tags|xss_clean');
+        $this->form_validation->set_rules('answer',  ' R&eacute;ponse',  'required|encode_php_tags|xss_clean');
+        
+        if ( $this->form_validation->run() )
+        {
+           $this->load->model('M_Quizz');
+            
+           $dataQuestion = array('question' => $this->input->post('quest'),
+                                 'choice_1'  => $this->input->post('choice1'),
+                                 'choice_2'  => $this->input->post('choice2'),
+                                 'choice_3'  => $this->input->post('choice3'),
+                                 'answer'   => $this->input->post('answer')
+               ); 
+           
+            if ( $this->M_Quizz->addQuestion($dataQuestion) )
+            {
+                $data['msg'] = '<p class="success users">La question a été ajoutée</p>';
+                $this->callBack($data);
+            }
+        }
+        else
+        {
+            $this->callBack($data);
+        }
+    }   
 
 }
 
