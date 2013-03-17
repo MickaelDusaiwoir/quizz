@@ -61,9 +61,10 @@ body{
     text-decoration: none;
 }
 
-.supprimer p, .modifier p {
+#container .supprimer p, #container .modifier p {
     display: none;
 }
+
 
 #container {
     width: 960px;
@@ -456,7 +457,7 @@ h1, h2, h3, h4, h5, p {
 
 #addQuestion label {
     .column(2);
-    margin: 1em 0;
+    margin: 1em 0 0 0;
     font-weight: bold;
 }
 
@@ -476,7 +477,7 @@ h1, h2, h3, h4, h5, p {
 
 #addQuestion input[type=submit] {
     padding: 0.2em 0.5em;
-    margin: 0.5em 0 0.5em 8.65em;
+    margin: 0.8em 0 0.5em 8.4em;
     font-size: 1.05em;
     box-shadow: none;
 }
@@ -516,13 +517,10 @@ h1, h2, h3, h4, h5, p {
 #listQuest li  {
     .column(7);
     display: block;
-    margin: 0 auto 1em auto;
+    margin: 0 auto 2em auto;
     padding-bottom: 1em;
     border-bottom: 1px dashed #999;
-}
-
-#listQuest li:last-child {
-    border: none;
+    position: relative;
 }
 
 #listQuest li ul, #listQuest li p {
@@ -546,15 +544,31 @@ h1, h2, h3, h4, h5, p {
     .column(2);
     display: inline-block;
     margin: 0;
-    padding: 0 1em 0 0;
+    padding: 0 0 0 1em;
     border: none;
+    border-left: 1px dashed #999;
+    vertical-align: top;
 }
 
-#listQuest li ul  li:last-child {
+#listQuest li ul li:first-child {
     padding: 0;
+}
+
+#listQuest li ul li:first-child {
+    border: none;
 }
 
 #listQuest em {
     color: rgb(50,130,50);
     margin-left: 1em;
+}
+
+#listQuest .actionQuest {
+    position: absolute;
+    top: 0;
+    right: -2em;
+}
+
+#listQuest h3 {
+    margin: 0 0 0.5em 0;
 }

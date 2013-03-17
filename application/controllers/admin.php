@@ -127,7 +127,12 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function seeUser() {
+    public function seeUser() 
+    {
+        if (!$this->session->userdata('logged_in')) {
+            redirect('admin/login');
+        }
+        
         $this->load->helper('form');
         $this->load->model('M_Quizz');
 
@@ -211,14 +216,18 @@ class Admin extends CI_Controller {
         }
 
         $dataListe['donnees'] = $this->M_Quizz->getListQuestion();
-        $dataLayout['titre'] = 'Administration - Questionnaire';
+        $dataLayout['titre'] = 'Administration - Questionnaires';
         $dataLayout['vue'] = $this->load->view('question', $dataListe, true);
         $this->load->view('layoutAdmin', $dataLayout);
     }
     
     public function addQuestion ()
     {
-        $data = array('display' => 'question', 'title' => 'Question', 'msg' => null, 'erreur' => null);
+        if (!$this->session->userdata('logged_in')) {
+            redirect('admin/login');
+        }
+        
+        $data = array('display' => 'questions', 'title' => 'Question', 'msg' => null, 'erreur' => null);
         
         $this->load->library('form_validation');
         
@@ -232,12 +241,12 @@ class Admin extends CI_Controller {
         {
            $this->load->model('M_Quizz');
             
-           $dataQuestion = array('question' => $this->input->post('quest'),
+           $dataQuestion = array('question'  => $this->input->post('quest'),
                                  'choice_1'  => $this->input->post('choice1'),
                                  'choice_2'  => $this->input->post('choice2'),
                                  'choice_3'  => $this->input->post('choice3'),
-                                 'answer'   => $this->input->post('answer')
-               ); 
+                                 'answer'    => $this->input->post('answer')
+            ); 
            
             if ( $this->M_Quizz->addQuestion($dataQuestion) )
             {
@@ -251,6 +260,55 @@ class Admin extends CI_Controller {
         }
     }   
 
+     public function updateQuestion () 
+    {
+        if ( $this->session->userdata('logged_in') ) 
+        {
+            $data = array('display' => 'question', 'title' => 'Question', 'msg' => null, 'erreur' => null);
+            
+            $id = $this->input->post('id');
+            
+            $this->load->library('form_validation');
+        
+            $this->form_validation->set_rules('quest',   ' Question',        'required|encode_php_tags|xss_clean');
+            $this->form_validation->set_rules('choice1', ' Proposition N°1', 'required|encode_php_tags|xss_clean');
+            $this->form_validation->set_rules('choice2', ' Proposition N°2', 'required|encode_php_tags|xss_clean');
+            $this->form_validation->set_rules('choice3', ' Proposition N°3', 'required|encode_php_tags|xss_clean');
+            $this->form_validation->set_rules('answer',  ' R&eacute;ponse',  'required|encode_php_tags|xss_clean');
+            
+            if ( $this->form_validation->run() )
+            {
+                $this->load->model('M_Quizz');
+            
+                $dataQuestion = array('question'  => $this->input->post('quest'),
+                                      'choice_1'  => $this->input->post('choice1'),
+                                      'choice_2'  => $this->input->post('choice2'),
+                                      'choice_3'  => $this->input->post('choice3'),
+                                      'answer'    => $this->input->post('answer'),
+                                      'id'        => $id
+                ); 
+
+                if ( $this->M_Quizz->updateQuestion($dataQuestion) )
+                {
+                    $data['msg'] = '<p class="success users">La question a été modifier</p>';
+                    $this->callBack($data);
+                }
+            }
+            else 
+            {   
+                
+                $dataListe['donnees'] = $this->M_Quizz->getUser($id);            
+                $dataLayout['titre'] = 'Connection à l\'administartion';
+                $dataLayout['vue'] = $this->load->view('user', $dataListe, true);
+                $this->load->view('layoutAdmin', $dataLayout);
+            }
+        }
+        else 
+        {
+            redirect('admin/login');
+        }
+    }
+    
 }
 
 ?>
