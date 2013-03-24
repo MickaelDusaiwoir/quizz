@@ -12,7 +12,7 @@
                     <?php echo anchor('#', 'Accueil', array('title' => "Retourner à la page d'accueil")); ?>
                 </li>
                 <li>
-                    <?php echo anchor('#', 'Quizz', array('title' => "Jouer au quizz")); ?>
+                    <?php echo anchor('game/quizz', 'Quizz', array('title' => "Jouer au quizz")); ?>
                 </li>
                 <li>
                     <?php echo anchor('#', 'nom du jeu', array('title' => "Jouer au jeu")); ?>

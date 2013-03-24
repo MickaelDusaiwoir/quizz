@@ -100,6 +100,9 @@ p {
   border-radius: 5px;
   font-weight: bold;
 }
+footer {
+  height: 3em;
+}
 #layout_admin {
   background: url('../img/fondB.png') repeat;
   margin: 0;
@@ -215,7 +218,10 @@ p {
 #addQuestion form,
 #listQuest h2,
 #listQuest ul,
-#listQuest p {
+#listQuest p,
+#updateQuestion form,
+#updateQuestion h2,
+#confirme {
   background: url('../img/fondG.png') repeat;
 }
 #addUser h2,
@@ -223,7 +229,9 @@ p {
 #updateUser h2,
 #addQuestion h2,
 #addQuestion h2,
-#listQuest h2 {
+#listQuest h2,
+#updateQuestion h2,
+#confirme {
   -moz-border-radius: 5px 5px 0 0;
   -webkit-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
@@ -430,21 +438,25 @@ p {
   box-shadow: none;
 }
 #addQuestion,
-#listQuest {
+#listQuest,
+#updateQuestion {
   display: inline-block;
   width: 940px;
   margin: 0 10px;
   margin: 0 auto;
 }
 #addQuestion form,
-#addQuestion h2 {
+#addQuestion h2,
+#updateQuestion form,
+#updateQuestion h2 {
   display: inline-block;
   width: 620px;
   margin: 0 10px;
   display: block;
   margin: 0 auto;
 }
-#addQuestion fieldset {
+#addQuestion fieldset,
+#updateQuestion fieldset {
   display: inline-block;
   width: 460px;
   margin: 0 10px;
@@ -452,14 +464,17 @@ p {
   margin: 0 auto;
   border: none;
 }
-#addQuestion h2 {
+#addQuestion h2,
+#updateQuestion h2 {
   padding: 0.5em 0em;
   text-align: center;
 }
-#addQuestion form {
+#addQuestion form,
+#updateQuestion form {
   font-size: 1.1em;
 }
-#addQuestion label {
+#addQuestion label,
+#updateQuestion label {
   display: inline-block;
   width: 140px;
   margin: 0 10px;
@@ -467,7 +482,9 @@ p {
   font-weight: bold;
 }
 #addQuestion input,
-#addQuestion textarea {
+#addQuestion textarea,
+#updateQuestion input,
+#updateQuestion textarea {
   display: inline-block;
   width: 300px;
   margin: 0 10px;
@@ -475,19 +492,25 @@ p {
   padding: 0.5em 0.25em;
   box-shadow: 0px 0px 1px #303030;
 }
-#addQuestion textarea {
+#addQuestion textarea,
+#updateQuestion textarea {
   vertical-align: top;
   margin-top: 1em;
   resize: vertical;
   height: 5em;
 }
-#addQuestion input[type=submit] {
+#addQuestion input[type=submit],
+#updateQuestion input[type=submit] {
   padding: 0.2em 0.5em;
   margin: 0.8em 0 0.5em 8.4em;
   font-size: 1.05em;
   box-shadow: none;
 }
-#addQuestion p {
+#updateQuestion input[type=submit] {
+  margin-left: 8.65em;
+}
+#addQuestion p,
+#updateQuestion p {
   margin: 0.35em 0 0.5em 0;
   padding: 0.25em 0;
   background-color: #fcc;
@@ -529,6 +552,10 @@ p {
   border-bottom: 1px dashed #999;
   position: relative;
 }
+#listQuest .question:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
 #listQuest li ul,
 #listQuest li p {
   display: inline-block;
@@ -563,7 +590,8 @@ p {
 #listQuest li ul li:first-child {
   border: none;
 }
-#listQuest em {
+#listQuest em,
+.answer {
   color: #328232;
   margin-left: 1em;
 }
@@ -574,4 +602,91 @@ p {
 }
 #listQuest h3 {
   margin: 0 0 0.5em 0;
+}
+#confirme {
+  display: inline-block;
+  width: 620px;
+  margin: 0 10px;
+  display: block;
+  margin: 15% auto 0 auto;
+  padding-bottom: 1em;
+}
+#confirme h3 {
+  display: inline-block;
+  width: 460px;
+  margin: 0 10px;
+  display: block;
+  margin: 0 auto 1em auto;
+  padding-top: 1.5em;
+  color: #cc0000;
+}
+#confirme div {
+  display: inline-block;
+  width: 300px;
+  margin: 0 10px;
+  display: block;
+  margin: 1em auto;
+}
+#confirme a {
+  display: inline-block;
+  width: 140px;
+  margin: 0 10px;
+  margin: 0;
+  padding: 0.15em 0;
+  font-size: 1.1em;
+  text-align: center;
+  background-color: #ccc;
+  border: 1px solid #999;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  box-shadow: 1px 1px 0 #999;
+}
+#confirme a:first-child {
+  margin-right: 0.65em;
+}
+#confirme a:hover {
+  background-color: #999;
+  border: 1px solid #666;
+  color: #eee;
+}
+#startQuizz {
+  position: relative;
+}
+#startQuizz img {
+  display: block;
+  margin-left: -20px;
+}
+#startQuizz form {
+  position: absolute;
+  top: 14.5em;
+  left: 4em;
+}
+#startQuizz fieldset {
+  border: none;
+}
+#startQuizz form label {
+  display: none;
+}
+#startQuizz #name {
+  display: inline-block;
+  width: 460px;
+  margin: 0 10px;
+  font-size: 2em;
+  padding: 0.25em 0.5em 0.25em 1em;
+  -moz-border-radius: 1em 1em;
+  -webkit-border-radius: 1em 1em;
+  border-radius: 1em 1em;
+  border: none;
+  margin-right: 3em;
+}
+#startQuizz input[type=submit] {
+  font-size: 1.7em;
+  padding: 0.25em 1em;
+  -moz-border-radius: 1em 1em;
+  -webkit-border-radius: 1em 1em;
+  border-radius: 1em 1em;
+  border: none;
 }

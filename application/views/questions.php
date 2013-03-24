@@ -12,7 +12,7 @@ if (isset($msg))
         echo form_fieldset(); 
         
         echo form_label('Question', 'quest'); 
-        echo form_textarea(array('name' => 'quest', 'id' => 'quest', 'placeholder' => 'Ex: La salade et les tomates je les mange en&nbsp;?', 'type' => 'text', 'value' => set_value('quest'))); 
+        echo form_textarea(array('name' => 'quest', 'id' => 'quest', 'placeholder' => 'Ex: La salade et les tomates je les mange en&nbsp;?', 'value' => set_value('quest'))); 
         echo form_error('quest'); 
         
         echo form_label('Proposition N°1', 'choice1'); 
@@ -27,7 +27,7 @@ if (isset($msg))
         echo form_input(array('name' => 'choice3', 'id' => 'choice3', 'placeholder' => 'Ex: Hiver', 'type' => 'text', 'value' => set_value('choice3')));
         echo form_error('choice3'); 
         
-        echo form_label('Réponse', 'answer'); 
+        echo form_label('Réponse', 'answer', array('class' => 'answer')); 
         echo form_input(array('name' => 'answer', 'id' => 'answer', 'placeholder' => 'Ex: &Eacute;té', 'type' => 'text', 'value' => set_value('answer')));
         echo form_error('answer'); 
         
@@ -44,7 +44,7 @@ if (isset($msg))
 <?php if ( isset($donnees) && count($donnees) !== 0 ) : ?>
     <ul>
         <?php foreach ( $donnees as $donnee ) : ?>
-        <li>
+        <li class="question">
             <h3>
                 Question&nbsp;:
             </h3>
@@ -67,8 +67,8 @@ if (isset($msg))
             </p>
             <div class="actionQuest">
                 <?php
-                    echo anchor('admin/seeQuestion/' . $donnee->id, '<p>Modifier</p>', array('title' => 'Modifier cette question', 'class' => 'modifier icon-pencil'));
-                    echo anchor('admin/removeQuestion/' . $donnee->id, '<p>Supprimer</p>', array('title' => 'Supprimer cette question', 'class' => 'supprimer icon-trash'));
+                    echo anchor('admin/seeOne/' . $donnee->id.'/question', '<p>Modifier</p>', array('title' => 'Modifier cette question', 'class' => 'modifier icon-pencil'));
+                    echo anchor('admin/confirme/' . $donnee->id.'/question', '<p>Supprimer</p>', array('title' => 'Supprimer cette question', 'class' => 'supprimer icon-trash'));
                 ?>
             </div>
         </li>

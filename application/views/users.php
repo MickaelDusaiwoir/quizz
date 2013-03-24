@@ -61,13 +61,13 @@ if (isset($msg))
                         <td>
                             <?php
                             if ($this->session->userdata('status_user') == 'admin') :
-                                echo anchor('admin/seeUser/' . $donnee->id, '<p>Modifier</p>', array('title' => 'Modifier cet utilisateur', 'class' => 'modifier icon-pencil'));
+                                echo anchor('admin/seeOne/' . $donnee->id.'/user', '<p>Modifier</p>', array('title' => 'Modifier cet utilisateur', 'class' => 'modifier icon-pencil'));
                                 if ($donnee->status !== 'admin'):  
-                                    echo anchor('admin/removeUser/' . $donnee->id, '<p>Supprimer</p>', array('title' => 'Supprimer cet utilisateur', 'class' => 'supprimer icon-trash'));
+                                    echo anchor('admin/confirme/' . $donnee->id.'/user', '<p>Supprimer</p>', array('title' => 'Supprimer cet utilisateur', 'class' => 'supprimer icon-trash'));
                                 endif;
                             elseif ($donnee->status !== 'admin' && $this->session->userdata('id_user') == $donnee->id) :
-                                echo anchor('admin/seeUser/' . $donnee->id, '<p>Modifier</p>', array('title' => 'Modifier cet utilisateur', 'class' => 'modifier icon-pencil'));
-                                echo anchor('admin/removeUser/' . $donnee->id, '<p>Supprimer</p>', array('title' => 'Supprimer cet utilisateur', 'class' => 'supprimer icon-trash'));
+                                echo anchor('admin/seeOne/' . $donnee->id.'/user', '<p>Modifier</p>', array('title' => 'Modifier cet utilisateur', 'class' => 'modifier icon-pencil'));
+                                echo anchor('admin/confirme/' . $donnee->id.'/user', '<p>Supprimer</p>', array('title' => 'Supprimer cet utilisateur', 'class' => 'supprimer icon-trash'));
                             endif;
                             ?>
                         </td>

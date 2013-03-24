@@ -89,7 +89,6 @@ h1, h2, h3, h4, h5, p {
     margin: 0.25em 0;
 }
 
-
 .success {
     background-color: #ada;
     color: #070;
@@ -101,6 +100,12 @@ h1, h2, h3, h4, h5, p {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     font-weight: bold;
+}
+
+footer {
+    //position: absolute;
+    //bottom: 0;
+    height: 3em;
 }
 
 //////////////////////////////////////////////////////////////////////////////// general admin
@@ -217,11 +222,11 @@ h1, h2, h3, h4, h5, p {
 }
 
 #addUser h2, #listUsers h2, #addUser form, #listUsers table, #updateUser h2, #updateUser form, #addQuestion h2, #addQuestion form, 
-#listQuest h2, #listQuest ul, #listQuest p {
+#listQuest h2, #listQuest ul, #listQuest p, #updateQuestion form, #updateQuestion h2, #confirme {
     background: url('../img/fondG.png') repeat;
 }
 
-#addUser h2, #listUsers h2, #updateUser h2, #addQuestion h2, #addQuestion h2, #listQuest h2 {
+#addUser h2, #listUsers h2, #updateUser h2, #addQuestion h2, #addQuestion h2, #listQuest h2, #updateQuestion h2, #confirme {
     -moz-border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0;
@@ -426,63 +431,67 @@ h1, h2, h3, h4, h5, p {
     box-shadow: none;
 }
 
-///////////////////////////////////////////////////////////////  Page question
+///////////////////////////////////////////////////////////////  Page questions // page question
 
-#addQuestion, #listQuest {
+#addQuestion, #listQuest, #updateQuestion {
     .column(12);
     margin: 0 auto;
 }
 
-#addQuestion form, #addQuestion h2 {
+#addQuestion form, #addQuestion h2, #updateQuestion form, #updateQuestion h2 {
     .column(8);
     display: block;
     margin: 0 auto;
 }
 
-#addQuestion fieldset {
+#addQuestion fieldset, #updateQuestion fieldset {
     .column(6);
     display: block;
     margin: 0 auto;
     border: none;
 }
 
-#addQuestion h2 {
+#addQuestion h2, #updateQuestion h2 {
     padding: 0.5em 0em;
     text-align: center;
 }
 
-#addQuestion form {
+#addQuestion form, #updateQuestion form {
     font-size: 1.1em;
 }
 
-#addQuestion label {
+#addQuestion label, #updateQuestion label {
     .column(2);
     margin: 1em 0 0 0;
     font-weight: bold;
 }
 
-#addQuestion input, #addQuestion textarea {
+#addQuestion input, #addQuestion textarea, #updateQuestion input, #updateQuestion textarea {
     .column(4);
     margin: 0;
     padding: 0.5em 0.25em;
     box-shadow: 0px 0px 1px #303030;
 }
 
-#addQuestion textarea {
+#addQuestion textarea, #updateQuestion textarea {
     vertical-align: top;
     margin-top: 1em;
     resize: vertical;
     height: 5em;
 }
 
-#addQuestion input[type=submit] {
+#addQuestion input[type=submit], #updateQuestion input[type=submit] {
     padding: 0.2em 0.5em;
     margin: 0.8em 0 0.5em 8.4em;
     font-size: 1.05em;
     box-shadow: none;
 }
 
-#addQuestion p {
+#updateQuestion input[type=submit] {
+    margin-left: 8.65em;
+}
+
+#addQuestion p, #updateQuestion p {
     margin: 0.35em 0 0.5em 0;
     padding: 0.25em 0;
     background-color: #fcc;
@@ -523,6 +532,11 @@ h1, h2, h3, h4, h5, p {
     position: relative;
 }
 
+#listQuest .question:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
 #listQuest li ul, #listQuest li p {
     .column(6);
     display: block;
@@ -558,7 +572,7 @@ h1, h2, h3, h4, h5, p {
     border: none;
 }
 
-#listQuest em {
+#listQuest em, .answer {
     color: rgb(50,130,50);
     margin-left: 1em;
 }
@@ -571,4 +585,100 @@ h1, h2, h3, h4, h5, p {
 
 #listQuest h3 {
     margin: 0 0 0.5em 0;
+}
+
+//////////////////////////////////////////////////////  Page confirme
+
+#confirme {
+    .column(8);
+    display: block;
+    margin: 15% auto 0 auto;
+    padding-bottom: 1em;
+}
+
+#confirme h3 {
+    .column(6);
+    display: block;
+    margin: 0 auto 1em auto;
+    padding-top: 1.5em;
+    color: #cc0000;
+}
+
+#confirme div {
+    .column(4);
+    display: block;
+    margin: 1em auto;
+}
+
+#confirme a {
+    .column(2);
+    margin: 0;
+    padding: 0.15em 0;
+    font-size: 1.1em;
+    text-align: center;
+    background-color: #ccc;
+    border: 1px solid #999;
+    color: #333;
+    text-decoration: none;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+    box-shadow: 1px 1px 0 #999;
+}
+
+#confirme a:first-child {
+    margin-right: 0.65em;
+}
+
+#confirme a:hover {
+   background-color: #999;
+    border: 1px solid #666;
+    color: #eee;
+}
+
+////////////////////////////////////////////////////////////   PAGE QUIZZ GAME
+
+#startQuizz {
+    position: relative;
+}
+
+#startQuizz img {
+    display: block;
+    margin-left: -20px;
+}
+
+#startQuizz form {
+    position: absolute;
+    top: 14.5em;
+    left: 4em;
+}
+
+#startQuizz fieldset {
+    border: none;
+}
+
+#startQuizz form label {
+    display: none;
+}
+
+#startQuizz #name {
+    .column(6);
+    font-size: 2em;
+    padding: 0.25em 0.5em 0.25em 1em;
+    -moz-border-radius: 1em 1em;
+    -webkit-border-radius: 1em 1em;
+    border-radius: 1em 1em;
+    border: none;
+    margin-right: 3em;
+}
+
+#startQuizz input[type=submit] {
+    font-size: 1.7em;
+    padding: 0.25em 1em;
+    -moz-border-radius: 1em 1em;
+    -webkit-border-radius: 1em 1em;
+    border-radius: 1em 1em;
+    border: none;
 }
