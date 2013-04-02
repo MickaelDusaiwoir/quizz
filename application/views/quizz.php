@@ -51,9 +51,9 @@
                 $pct = ( $result['goodAnswer'] / $result['nbQuestion'])* 100;
                 
                 if ( $pct > 50 )
-                    echo '<h3>Félicitation tu as términé le quizz avec une note de <em>'.$result['goodAnswer'] .'/'. $result['nbQuestion'].'</em></h3>';        
+                    echo '<h3>Félicitation tu as términé le quizz avec un score de <em>'.$result['goodAnswer'] .'/'. $result['nbQuestion'].'</em></h3>';        
                 else
-                    echo '<h3>Désolé tu as términé le quizz avec une note de <em>'.$result['goodAnswer'] .'/'. $result['nbQuestion'].'</em></h3>'; 
+                    echo '<h3>Désolé tu as términé le quizz avec un score de <em>'.$result['goodAnswer'] .'/'. $result['nbQuestion'].'</em></h3>'; 
             ?>
         </div>
 <?php        

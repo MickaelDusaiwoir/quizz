@@ -39,6 +39,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 define('CSS_DIR','web/css/');
 define('IMG_QUIZZ_DIR','web/img/quizz/');
+define('JS_DIR','web/js');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

@@ -31,5 +31,16 @@
         <footer>
             <?php echo anchor('admin/connect', "Panneau d'administration", array('title' => "Administrer le site internet")); ?>
         </footer>
+        
+        <script src="<?= base_url() . JS_DIR ?>/jquery.js"></script>
+        <?php if ( $type == 'quest' ) : ?>    
+        <script> var sQuestions = JSON.stringify(<?php echo $questions; ?>); </script>
+                
+        <?php
+            endif;
+        ?>
+        <?php if ( $type == 'quest' || $type == 'start' ) : ?>
+            <script src="<?= base_url() . JS_DIR ?>/quizz.js" ></script>
+        <?php endif; ?>
     </body>
 </html>
