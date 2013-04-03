@@ -34,7 +34,7 @@
         
         <script src="<?= base_url() . JS_DIR ?>/jquery.js"></script>
         <?php if ( $type == 'quest' ) : ?>    
-        <script> var sQuestions = JSON.stringify(<?php echo $questions; ?>); </script>
+        <script> var sQuestions = '<?php echo json_encode($questions); ?>'; </script>
                 
         <?php
             endif;
