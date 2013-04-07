@@ -77,7 +77,7 @@ class Game extends CI_Controller {
         else 
             $user_id = $this->input->post('user_id');
         
-        $questions = $this->M_Quizz->getListQuestion();        
+        $questions = $this->M_Quizz->getListQuestion();       
         $this->form_validation->set_rules('choice', 'choix', 'required');
         
         if ( $this->form_validation->run() )
@@ -88,7 +88,7 @@ class Game extends CI_Controller {
                 $answer = 1;
             else
                 $answer = 0;
-                       
+            
             if ( count($questions) == $numQuest )
             {
                 $status = 'fini';

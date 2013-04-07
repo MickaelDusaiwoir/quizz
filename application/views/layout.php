@@ -33,14 +33,25 @@
         </footer>
         
         <script src="<?= base_url() . JS_DIR ?>/jquery.js"></script>
-        <?php if ( $type == 'quest' ) : ?>    
-        <script> var sQuestions = '<?php echo json_encode($questions); ?>'; </script>
-                
+        <?php
+            
+        if ( isset($type) ):        
+            if ( $type == 'quest' ) : ?>    
+                <script> 
+                        var sQuestions = '<?php echo json_encode($questions); ?>'; 
+                        var nUser = <?= $user_id ?>;
+                        var url_quizz = '<?= base_url() ?>web/ajax/quizz.php';
+                </script>
         <?php
             endif;
         ?>
-        <?php if ( $type == 'quest' || $type == 'start' ) : ?>
-            <script src="<?= base_url() . JS_DIR ?>/quizz.js" ></script>
-        <?php endif; ?>
+        <?php 
+            if ( $type == 'quest' || $type == 'start' ) : 
+        ?>
+                <script src="<?= base_url() . JS_DIR ?>/quizz.js" ></script>
+        <?php 
+            endif; 
+        endif;
+        ?>
     </body>
 </html>

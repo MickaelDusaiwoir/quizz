@@ -306,11 +306,11 @@ class Admin extends CI_Controller {
         
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('quest',   ' Question',        'required|encode_php_tags|xss_clean');
-        $this->form_validation->set_rules('choice1', ' Proposition N°1', 'required|encode_php_tags|xss_clean');
-        $this->form_validation->set_rules('choice2', ' Proposition N°2', 'required|encode_php_tags|xss_clean');
-        $this->form_validation->set_rules('choice3', ' Proposition N°3', 'required|encode_php_tags|xss_clean');
-        $this->form_validation->set_rules('answer',  ' R&eacute;ponse',  'required|encode_php_tags|xss_clean');
+        $this->form_validation->set_rules('quest',   ' Question',        'trim|required|encode_php_tags|xss_clean');
+        $this->form_validation->set_rules('choice1', ' Proposition N°1', 'trim|required|encode_php_tags|xss_clean');
+        $this->form_validation->set_rules('choice2', ' Proposition N°2', 'trim|required|encode_php_tags|xss_clean');
+        $this->form_validation->set_rules('choice3', ' Proposition N°3', 'trim|required|encode_php_tags|xss_clean');
+        $this->form_validation->set_rules('answer',  ' R&eacute;ponse',  'trim|required|encode_php_tags|xss_clean');
         
         if ( $this->form_validation->run() )
         {
@@ -345,11 +345,11 @@ class Admin extends CI_Controller {
             
             $this->load->library('form_validation');
         
-            $this->form_validation->set_rules('quest',   ' question',        'required|encode_php_tags|xss_clean');
-            $this->form_validation->set_rules('choice1', ' proposition N°1', 'required|encode_php_tags|xss_clean');
-            $this->form_validation->set_rules('choice2', ' proposition N°2', 'required|encode_php_tags|xss_clean');
-            $this->form_validation->set_rules('choice3', ' proposition N°3', 'required|encode_php_tags|xss_clean');
-            $this->form_validation->set_rules('answer',  ' r&eacute;ponse',  'required|encode_php_tags|xss_clean');
+            $this->form_validation->set_rules('quest',   ' question',        'trim|required|encode_php_tags|xss_clean');
+            $this->form_validation->set_rules('choice1', ' proposition N°1', 'trim|required|encode_php_tags|xss_clean');
+            $this->form_validation->set_rules('choice2', ' proposition N°2', 'trim|required|encode_php_tags|xss_clean');
+            $this->form_validation->set_rules('choice3', ' proposition N°3', 'trim|required|encode_php_tags|xss_clean');
+            $this->form_validation->set_rules('answer',  ' r&eacute;ponse',  'trim|required|encode_php_tags|xss_clean');
             
             if ( $this->form_validation->run() )
             {
