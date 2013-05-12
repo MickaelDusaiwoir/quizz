@@ -12,8 +12,8 @@ body:after {
 }
 @font-face {
   font-family: 'fontello';
-  src: url("../font/fontello.eot?76878236");
-  src: url("../font/fontello.eot?76878236#iefix") format('embedded-opentype'), url("../font/fontello.woff?76878236") format('woff'), url("../font/fontello.ttf?76878236") format('truetype'), url("../font/fontello.svg?76878236#fontello") format('svg');
+  src: url('../font/fontello.eot?92277868');
+  src: url('../font/fontello.eot?92277868#iefix') format('embedded-opentype'), url('../font/fontello.woff?92277868') format('woff'), url('../font/fontello.ttf?92277868') format('truetype'), url('../font/fontello.svg?92277868#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -55,6 +55,15 @@ body {
   content: '\270e';
   font-size: 1.4em;
   color: #666;
+}
+.icon-volume-off:before {
+  content: '\1f507';
+  font-size: 1em;
+  margin-left: 0em;
+}
+.icon-volume-up:before {
+  content: '\1f50a';
+  font-size: 1em;
 }
 .supprimer,
 .modifier {
@@ -689,4 +698,148 @@ footer {
   -webkit-border-radius: 1em 1em;
   border-radius: 1em 1em;
   border: none;
+}
+#quizz {
+  width: 400px;
+  height: 500px;
+  background: url('../img/ciel.jpg') repeat top center;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+#quizz form {
+  padding-top: 4em;
+}
+#quizz fieldset {
+  border: none;
+  padding: 0;
+  width: 400px;
+  margin: 0 auto;
+}
+#quizz h2 {
+  font-size: 32px;
+  padding: 0.2em 0.5em;
+  margin: 0;
+  position: relative;
+  z-index: 10;
+}
+#quizz label {
+  display: block;
+  margin: 0 0 1em 4.5em;
+  width: 300px;
+  text-align: center;
+  padding: 0.5em 0;
+  border: 3px groove black;
+}
+#quest {
+  background: url('../img/bois.jpg') repeat-y top center;
+}
+#quest p {
+  font-size: 1.2em;
+  width: 16em;
+  margin: 1em auto;
+  padding: 1.2em 0 1em 0;
+  text-shadow: 1px 1px #888;
+}
+#lab {
+  position: absolute;
+  bottom: 0.45em;
+  width: 400px;
+  margin-bottom: -1em;
+  padding-top: 2em;
+  background: url('../img/herbe.png') no-repeat;
+}
+#quizz #lab p {
+  display: inline-block;
+  width: 1.5em;
+  font-size: 1.65em;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  border: 3px groove #000;
+  border-right: none;
+  padding-bottom: 0.05em;
+}
+#lab #choice_1 + p {
+  top: 1.2em;
+  left: 1.11em;
+}
+#lab label:nth-child(1),
+#lab #choice_1 + p {
+  border-color: #55EEFF;
+  background-color: #97f3fd;
+  color: #0016d6;
+  font-weight: bold;
+}
+#lab #choice_2 + p {
+  top: 3.55em;
+  left: 1.11em;
+}
+#lab label:nth-child(4),
+#lab #choice_2 + p {
+  border-color: #ffe400;
+  background-color: #faf841;
+  color: #ff2100;
+  font-weight: bold;
+}
+#lab #choice_3 + p {
+  top: 5.88em;
+  left: 1.11em;
+}
+#lab label:nth-child(7),
+#lab #choice_3 + p {
+  border-color: #ff8bb7;
+  background-color: #ffbad4;
+  color: #ff0e47;
+  font-weight: bold;
+}
+@-moz-document url-prefix() {
+  #lab #choice_1 + p {
+    top: 1.21em;
+    padding-bottom: 0;
+  }
+  #lab #choice_3 + p {
+    top: 5.93em;
+    padding-bottom: 0;
+  }
+}
+#son {
+  display: inline-block;
+  padding: 0.1em 0.15em;
+  margin-bottom: 0;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  border: 1px solid #cccccc;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -ms-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  margin-top: 0;
+  position: absolute;
+  top: 0.25em;
+  right: 0.25em;
+}
+#son:hover {
+  background-position: 0 2.8em;
+  background-color: cyan;
+}
+#son span {
+  display: none;
+}
+#quizz #nuage_1 {
+  position: absolute;
+  top: 3em;
+  left: 0;
+  z-index: 1;
 }

@@ -1,5 +1,7 @@
 {
   "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
   "glyphs": [
     {
       "search": [
@@ -27,6 +29,33 @@
       "css": "trash",
       "orig_css": "trash",
       "orig_code": 59177,
+      "src": "fontawesome"
+    },
+    {
+      "search": [
+        "volume",
+        "sound",
+        "mute"
+      ],
+      "code": 128263,
+      "from": 128263,
+      "uid": "e44601720c64e6bb6a2d5cba6b0c588c",
+      "css": "volume-off",
+      "orig_css": "volume-off",
+      "orig_code": 128263,
+      "src": "fontawesome"
+    },
+    {
+      "search": [
+        "volume",
+        "sound"
+      ],
+      "code": 128266,
+      "from": 128266,
+      "uid": "76857a03fbaa6857fe063b6c25aa98ed",
+      "css": "volume-up",
+      "orig_css": "volume-up",
+      "orig_code": 128266,
       "src": "fontawesome"
     }
   ]

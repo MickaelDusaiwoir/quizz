@@ -5,8 +5,21 @@
     // -- variables globals
 
     var aKey = new Array('question', 'choice_1', 'choice_2', 'choice_3', 'answer'),
-        nNumQuest = 0;      
-	
+        nNumQuest = 0,
+        nResult = 0;   
+        
+    var soundUrl = urlSite + 'web/sound/quizz.wav',
+        son = new Audio();             
+        son.src = soundUrl;
+        
+    var repeatSong = 0;
+    
+    var cloud_1 = $('#nuage_1'),
+        cloudWay = $('#quizz').width(),
+        cloud_1_Pos = 0,
+        cloud_1_wayEnd = cloudWay + cloud_1.width();
+        
+        console.log(cloud_1_wayEnd);
     // -- methods
 
     var getChoice = function ( e ) {
@@ -20,11 +33,27 @@
             
             
         if ( aQuestions[nNumQuest][aKey[4]] == aQuestions[nNumQuest][sChoice] ) 
+        {
             nAnswer = 1;
+            nResult ++;
+        }
         else
+        {
             nAnswer = 0;
+        }
         
-        if ( aQuestions.length == nNumQuest ) 
+        var i = 0;
+        var nbQuestion = 0;
+        
+        for ( i; i < i + 1; i++ )
+        {
+            if ( aQuestions[i] )
+                nbQuestion = nbQuestion + 1;
+            else
+                break;
+        }
+         
+        if ( (nbQuestion - 1) == nNumQuest ) 
         {
             sStatus = 'fini';
             callAjax( aQuestions[nNumQuest]['id'], nAnswer, sStatus );
@@ -63,9 +92,57 @@
     
      var endGame = function () {
          
+         var msg;
+         
+         if ( nResult > '10' )
+             msg = "Félicitation tu as terminer le quizz avec un total de ";
+         else 
+             msg = "Désole mais tu as terminer le quizz avec un total de ";
+         
+         $('#quizz form').remove();
+         $('<p></p>').text(msg).appendTo('#quizz').append('<em>'+ ( nResult - 1 ) + "/" + nNumQuest +'</em>');
+     }
+     
+     var controlSound = function ( e ) {
+         
+         if ( $(this).attr('data-son') == 'play' )
+         {
+             $(this).attr('class','icon-volume-off').attr('data-son','stop');
+             son.pause();
+             son.currentTime = 0;
+             clearInterval(repeatSong);
+         }
+         else
+         {
+              $(this).attr('class','icon-volume-up').attr('data-son','play'); 
+              playedSound();
+         }
          
      }
-
+ 
+     var playedSound = function () {
+         
+        var i = 0;
+        repeatSong = setInterval(function(){
+                  console.log(i);
+                  i = i + 1;                      
+                  son.play();
+        }, 315000 );
+        
+        son.play();
+         
+     }
+ 
+     function animeCloud () {
+         
+         if ( cloud_1_Pos < cloudWay ) 
+            cloud_1_Pos = cloud_1_Pos + 5;
+         else
+             cloud_1_Pos = 0 - cloud_1.width();
+             
+         cloud_1.animate({"left": cloud_1_Pos}, "slow");
+     }
+     
     $( function () {
 
         // -- onload routines
@@ -74,8 +151,16 @@
         $('input[type=radio]').hide();
         $('input[type=submit]').hide();
         $('#start input[type=submit]').show();
-        
         $('label').on('click', getChoice);
+        
+        if ( playSound )
+            playedSound();
+              
+        $('#son').on('click', controlSound);
+        
+        animeCloud();   
+        
+        setInterval(animeCloud, 1);
 
     } );
 

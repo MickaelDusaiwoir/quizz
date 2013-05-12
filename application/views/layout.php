@@ -35,22 +35,23 @@
         <script src="<?= base_url() . JS_DIR ?>/jquery.js"></script>
         <?php
             
-        if ( isset($type) ):        
+        if ( isset($type) ):   
+            if ( $type == 'quest' || $type == 'start' ) : 
+        ?>
+                <script> var urlSite = '<?= base_url() ?>'; </script>
+                <script src="<?= base_url() . JS_DIR ?>/quizz.js" ></script>
+        <?php 
+            endif; 
+            
             if ( $type == 'quest' ) : ?>    
                 <script> 
                         var sQuestions = '<?php echo json_encode($questions); ?>'; 
                         var nUser = <?= $user_id ?>;
                         var url_quizz = '<?= base_url() ?>web/ajax/quizz.php';
+                        var playSound = true;                        
                 </script>
         <?php
             endif;
-        ?>
-        <?php 
-            if ( $type == 'quest' || $type == 'start' ) : 
-        ?>
-                <script src="<?= base_url() . JS_DIR ?>/quizz.js" ></script>
-        <?php 
-            endif; 
         endif;
         ?>
     </body>
