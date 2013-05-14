@@ -53,7 +53,8 @@
             echo form_close();
             
             echo '<p id="son" class="icon-volume-up" data-son="play"><span>Volume</span></p>'.
-                 '<img src="'.site_url() . IMG_QUIZZ_DIR.'nuage_1.png" width="130" height="72" alt="nuage" title="nuage" id="nuage_1" />';
+                 '<img src="'.site_url() . IMG_QUIZZ_DIR.'nuage_1.png" width="130" height="72" alt="nuage" title="nuage" id="nuage_1" />'.
+                 '<img src="'.site_url() . IMG_QUIZZ_DIR.'p_nuage.png" height="30" width="60" alt="nuage d\'arrière plan" title="nuage" id="p_nuage" />';
             
         echo '</div>';
         

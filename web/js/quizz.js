@@ -15,11 +15,11 @@
     var repeatSong = 0;
     
     var cloud_1 = $('#nuage_1'),
+        cloud_2 = $('#p_nuage'),
         cloudWay = $('#quizz').width(),
         cloud_1_Pos = 0,
-        cloud_1_wayEnd = cloudWay + cloud_1.width();
-        
-        console.log(cloud_1_wayEnd);
+        cloud_2_Pos = 165;
+    
     // -- methods
 
     var getChoice = function ( e ) {
@@ -56,23 +56,23 @@
         if ( (nbQuestion - 1) == nNumQuest ) 
         {
             sStatus = 'fini';
-            callAjax( aQuestions[nNumQuest]['id'], nAnswer, sStatus );
+            saveAnswerAjax( aQuestions[nNumQuest]['id'], nAnswer, sStatus );
             endGame();
         }
         else
         {
             sStatus = 'en cours';
-            callAjax( aQuestions[nNumQuest]['id'], nAnswer, sStatus );
+            saveAnswerAjax( aQuestions[nNumQuest]['id'], nAnswer, sStatus );
             nextQuestion( aQuestions );
         }        
     }
 
-    var callAjax = function ( id_quest, nAnswer, sStatus ) {
+    var saveAnswerAjax = function ( id_quest, nAnswer, sStatus ) {
         
         jQuery.ajax({
 		type: "POST",
 		url: url_quizz,
-		data: {"user_id" : nUser, "id_quest" : id_quest, "answer" : nAnswer, "status" : sStatus},
+		data: {"user_id" : nUser, "id_quest" : id_quest, "answer" : nAnswer, "status" : sStatus, "type" : "answer"},
 		success: function (data) {
 			console.log(data);
 		}
@@ -135,12 +135,33 @@
  
      function animeCloud () {
          
-         if ( cloud_1_Pos < cloudWay ) 
-            cloud_1_Pos = cloud_1_Pos + 5;
+         /*var tmp = 0 - cloud_1.width();
+         
+         if ( tmp == cloud_1_Pos )
+             console.log('connerie');
          else
+             console.log('c\'est bon');*/
+         
+         if ( cloud_1_Pos < cloudWay )
+         {
+            cloud_1_Pos = cloud_1_Pos + 5;
+            cloud_1.animate({"left": cloud_1_Pos, "top" : "0"}, "slow");
+         }
+         else
+         {
              cloud_1_Pos = 0 - cloud_1.width();
+             cloud_1.animate({"top": "-100"}, "fast", function () {
+                cloud_1.animate({"left": cloud_1_Pos}, "fast");
+             });
+         }
+         
+         if ( cloud_2_Pos < cloudWay )
+             cloud_2_Pos = cloud_2_Pos + 4;
+         else
+             cloud_2_Pos = 0 - cloud_2.width();
              
-         cloud_1.animate({"left": cloud_1_Pos}, "slow");
+         
+         cloud_2.animate({"left": cloud_2_Pos}, "slow");
      }
      
     $( function () {

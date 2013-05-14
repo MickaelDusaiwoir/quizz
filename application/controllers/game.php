@@ -126,6 +126,13 @@ class Game extends CI_Controller {
         $this->load->view('layout', $dataLayout);
     }
         
+    public function lastUserQuizz () {
+        
+        $this->load->model('M_Quizz');
+        
+        return $this->M_Quizz->getLastUser();
+        
+    }
     
 }
 

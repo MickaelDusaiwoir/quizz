@@ -77,7 +77,7 @@ class Admin extends CI_Controller {
 
     public function disconnect() {
         $this->session->sess_destroy();
-        redirect('quizz/afficher');
+        redirect(base_url());
     }
     
     // Global 

@@ -38,6 +38,16 @@
             $this->db->update('participants', array('bonne_reponse' => $goodAnswer, 'total_quest' => $numQuest));
         }
         
+        public function getLastUser () {
+            
+            $req = "SELECT * FROM participants WHERE `bonne_reponse` != NULL ORDER BY `id` DESC LIMIT 0 , 5;";
+            $query = $this->db->query($req);
+            $lastUser = $query->result_array();            
+            
+            return $lastUser;
+            
+        }
+        
     }
 
 
