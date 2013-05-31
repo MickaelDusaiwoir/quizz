@@ -6,7 +6,8 @@
 
     var aKey = new Array('question', 'choice_1', 'choice_2', 'choice_3', 'answer'),
         nNumQuest = 0,
-        nResult = 0;   
+        nResult = 0,
+        nTotalQuest = 0;   
         
     var soundUrl = urlSite + 'web/sound/quizz.wav',
         son = new Audio();             
@@ -19,6 +20,9 @@
         cloudWay = $('#quizz').width(),
         cloud_1_Pos = 0,
         cloud_2_Pos = 165;
+        
+    var cloud_1_visible = true,
+        cloud_2_visible = true;
     
     // -- methods
 
@@ -52,11 +56,14 @@
             else
                 break;
         }
+        
+        nTotalQuest = nbQuestion;
          
         if ( (nbQuestion - 1) == nNumQuest ) 
         {
             sStatus = 'fini';
             saveAnswerAjax( aQuestions[nNumQuest]['id'], nAnswer, sStatus );
+            updateUser( nbQuestion, nResult, sStatus );
             endGame();
         }
         else
@@ -67,12 +74,25 @@
         }        
     }
 
+    var updateUser = function ( nQuest, nResult, sStatut ) {
+        
+        jQuery.ajax({
+                type: "POST",
+		url: url_quizz,
+		data: {"user_id" : nUser, "num_quest" : nQuest, "result" : nResult, "status" : sStatut, "dir" : "update"},
+		success: function (data) {
+			console.log(data);
+		}
+        });
+        
+    }
+
     var saveAnswerAjax = function ( id_quest, nAnswer, sStatus ) {
         
         jQuery.ajax({
 		type: "POST",
 		url: url_quizz,
-		data: {"user_id" : nUser, "id_quest" : id_quest, "answer" : nAnswer, "status" : sStatus, "type" : "answer"},
+		data: {"user_id" : nUser, "id_quest" : id_quest, "answer" : nAnswer, "status" : sStatus, "dir" : "answer"},
 		success: function (data) {
 			console.log(data);
 		}
@@ -83,7 +103,7 @@
         
         nNumQuest = nNumQuest + 1;
         
-        $('#quest span').text(nNumQuest + 1);
+        $('#num_quest').text(nNumQuest + 1);
         $('#quest p').text( aQuestions[nNumQuest][aKey[0]] );
         $('#choice_1').prev().text( aQuestions[nNumQuest][aKey[1]] );
         $('#choice_2').prev().text( aQuestions[nNumQuest][aKey[2]] );
@@ -92,15 +112,24 @@
     
      var endGame = function () {
          
-         var msg;
+         var msg, sId;
          
          if ( nResult > '10' )
-             msg = "Félicitation tu as terminer le quizz avec un total de ";
+         {
+             msg = "Félicitation tu as terminé le quizz avec un total de ";
+             sId = 'good';
+         }
          else 
-             msg = "Désole mais tu as terminer le quizz avec un total de ";
+         {
+             msg = "Désole mais tu as terminé le quizz avec un total de ";
+             sId = 'bad';
+         }
+         
+         if ( nResult < 0 ) 
+             nResult = 0;
          
          $('#quizz form').remove();
-         $('<p></p>').text(msg).appendTo('#quizz').append('<em>'+ ( nResult - 1 ) + "/" + nNumQuest +'</em>');
+         $('<p></p>').attr('id', 'endQuizz').text(msg).appendTo('#quizz').append('<em id="'+sId+'">'+ nResult + "/" + nTotalQuest +'</em>');
      }
      
      var controlSound = function ( e ) {
@@ -122,48 +151,66 @@
  
      var playedSound = function () {
          
-        var i = 0;
-        repeatSong = setInterval(function(){
-                  console.log(i);
-                  i = i + 1;                      
-                  son.play();
-        }, 315000 );
+        repeatSong = setInterval( playedSound, 240000 );
+        
+        console.log('son');
         
         son.play();
          
      }
  
      function animeCloud () {
-         
-         /*var tmp = 0 - cloud_1.width();
-         
-         if ( tmp == cloud_1_Pos )
-             console.log('connerie');
-         else
-             console.log('c\'est bon');*/
-         
+                  
          if ( cloud_1_Pos < cloudWay )
          {
-            cloud_1_Pos = cloud_1_Pos + 5;
-            cloud_1.animate({"left": cloud_1_Pos, "top" : "0"}, "slow");
+            if ( cloud_1_visible == true )
+            {
+                cloud_1_Pos = cloud_1_Pos + 5;
+                cloud_1.animate({"left": cloud_1_Pos, "top" : "0"}, "slow");
+            }
+            else
+            {
+                cloud_1_Pos = cloud_1_Pos + 5;
+                cloud_1.animate({"left": cloud_1_Pos, "top" : "-100"}, "slow");
+                cloud_1_visible = true; 
+            }
          }
          else
          {
-             cloud_1_Pos = 0 - cloud_1.width();
+             cloud_1_Pos = (0 - cloud_1.width()) -20 ;
              cloud_1.animate({"top": "-100"}, "fast", function () {
                 cloud_1.animate({"left": cloud_1_Pos}, "fast");
              });
+             
+             cloud_1_visible = false;
          }
          
-         if ( cloud_2_Pos < cloudWay )
-             cloud_2_Pos = cloud_2_Pos + 4;
-         else
-             cloud_2_Pos = 0 - cloud_2.width();
-             
          
-         cloud_2.animate({"left": cloud_2_Pos}, "slow");
+         if ( cloud_2_Pos < cloudWay )
+         {
+            if ( cloud_2_visible == true )
+            {
+                cloud_2_Pos = cloud_2_Pos + 4;
+                cloud_2.animate({"left": cloud_2_Pos, "top" : "270"}, "slow");
+            }
+            else
+            {
+                cloud_2_Pos = cloud_2_Pos + 4;
+                cloud_2.animate({"left": cloud_2_Pos, "top" : "600"}, "slow");
+                cloud_2_visible = true; 
+            }
+         }
+         else
+         {
+             cloud_2_Pos = (0 - cloud_2.width()) - 20 ;
+             cloud_2.animate({"top": "600"}, "fast", function () {
+                cloud_2.animate({"left": cloud_2_Pos}, "fast");
+             });
+             
+             cloud_2_visible = false;
+         }
      }
-     
+       
     $( function () {
 
         // -- onload routines
@@ -178,9 +225,7 @@
             playedSound();
               
         $('#son').on('click', controlSound);
-        
-        animeCloud();   
-        
+
         setInterval(animeCloud, 1);
 
     } );

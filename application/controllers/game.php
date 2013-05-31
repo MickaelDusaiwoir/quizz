@@ -134,5 +134,14 @@ class Game extends CI_Controller {
         
     }
     
+    // jeu de plateform
+    
+    public function ecoGame () {
+        $dataLayout['titre'] = 'ecoGame';
+        $dataList['type'] = 'ecoGame';
+        $dataLayout['vue'] = $this->load->view('ecoGame', $dataList, true);
+        $this->load->view('layout', $dataLayout);
+    }
+    
 }
 

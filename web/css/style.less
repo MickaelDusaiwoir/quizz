@@ -1,6 +1,18 @@
 @import "grid.less";
 
 
+@font-face {
+    font-family: 'JennaSueRegular';
+    src: url('../font/JennaSue-webfont.eot');
+    src: url('../font/JennaSue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/JennaSue-webfont.woff') format('woff'),
+         url('../font/JennaSue-webfont.ttf') format('truetype'),
+         url('../font/JennaSue-webfont.svg#JennaSueRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
  @font-face {
     font-family: 'fontello';
     src: url('../font/fontello.eot?92277868');
@@ -35,14 +47,47 @@
   margin-left: 0.2em;
 }
 
+#layout_game {
+    background: url('../img/bg_nuage.jpg') repeat;
+}
+
 body{    
     font: normal 15px Helvetica, Arial, Sans-Serif;
     line-height: 1.5;
+    margin: 0;
 }
 
-#layout_game {
+h1, h2, h3 {
+    font-family: 'JennaSueRegular';
+}
+
+footer {
+    text-align: center;
+    padding-top: 5em;
+    margin-top: -4em;
+    height: 3em;
+    background: url('../img/herbe.png') repeat-x;
+    position: relative;
+    z-index: 15;
+}
+
+footer a {
+    color: white;
+    background-color: green;
+    padding: 0.4em 1em;
+    border-radius: 20px;
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+footer a:hover {
+    opacity: 1;
+}
+
+#layout_game #container {
     margin: 0 auto;
     width: 960px;
+    min-height: 615px;
 }
 
 .icon-trash:before { 
@@ -82,6 +127,7 @@ body{
 #container {
     width: 960px;
     margin: 0 auto;
+    position: relative;
 }
 
 h1, h2, h3, h4, h5, p {
@@ -113,12 +159,6 @@ h1, h2, h3, h4, h5, p {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     font-weight: bold;
-}
-
-footer {
-    //position: absolute;
-    //bottom: 0;
-    height: 3em;
 }
 
 //////////////////////////////////////////////////////////////////////////////// general admin
@@ -651,25 +691,82 @@ footer {
     color: #eee;
 }
 
+//////////////////////////////////////////////////////////// MENU 
+
+nav ul {
+    margin: 0.5em 0;
+}
+
+nav li {
+    display: inline-block;
+    position: relative;
+    height: 6em;
+    width: 16.5em;
+    background-image: url('../img/menu.png');
+}
+
+nav li a {
+    display: block;
+    padding: 2.7em 0 0.7em 0;
+    text-align: center;
+    font-size: 18px;
+    text-decoration: none;
+    color: #59f;
+    text-shadow: 1px 1px 0px #15b; //59f
+}
+
+nav li a:hover {
+    color: #ffcc33;
+    text-shadow: 1px 1px 0px #c60; //ff9900
+}
+
+nav li:first-child {
+    top: 10em;
+    left: 1.5em;
+}
+
+nav li:nth-child(2) {
+    left: 8em;
+}
+
+nav li:nth-child(3) {
+    left: 24em;
+}
+
+nav li:last-child {
+    left: 32em;
+    top: 10em;
+}
+
 ////////////////////////////////////////////////////////////   PAGE QUIZZ GAME ////  START QUIZZ
 
 #startQuizz {
     position: relative;
-}
-
-#startQuizz img {
-    display: block;
-    margin-left: -20px;
+    width: 500px;
+    margin: 0 auto;
+    padding: 120px 0 140px 0;
+    background-image: url('../img/quizz/iphone.png');
 }
 
 #startQuizz form {
-    position: absolute;
-    top: 14.5em;
-    left: 4em;
+    min-height: 465px;
+    width: 400px;
+    margin: 1.8em auto 0 auto;
+    background: url('../img/ciel.jpg') repeat-y;
 }
 
 #startQuizz fieldset {
     border: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 6em;
+}
+
+#startQuizz p {
+    width: 400px;
+    font-size: 17px;
+    margin-top: 2em;
 }
 
 #startQuizz form label {
@@ -677,26 +774,85 @@ footer {
 }
 
 #startQuizz #name {
-    .column(6);
+    width: 10em;
     font-size: 2em;
-    padding: 0.25em 0.5em 0.25em 1em;
-    -moz-border-radius: 1em 1em;
-    -webkit-border-radius: 1em 1em;
-    border-radius: 1em 1em;
+    padding: 90px 30px 30px;
     border: none;
-    margin-right: 3em;
+    display: block;
+    margin: 0 auto;
+    background: url('../img/quizz/nuage_n.png') 5px 0;
 }
 
 #startQuizz input[type=submit] {
     font-size: 1.7em;
-    padding: 0.25em 1em;
     -moz-border-radius: 1em 1em;
     -webkit-border-radius: 1em 1em;
-    border-radius: 1em 1em;
+    border-radius: 50%;
     border: none;
+
+    box-shadow: 2px 1px 2px #339900; // 339900
+    color: #66ff00; // 66ff00
+    background-color: #77dd11; // 77dd11
+    text-shadow: 1px 1px #339900; // 339900
+
+    padding: 0;
+
+    width: 4em;
+    height: 4em;
+
+    position: absolute;
+    top: 10em;
+    left: 5.8em;
+}
+
+#startQuizz input[type=submit]:hover {
+    box-shadow: 2px 1px 2px #77dd11;
+    color: #228800;
+    background-color: #66ff00;
+    text-shadow: 1px 1px #77dd11;
+}
+
+#startQuizz .replay, #quizz_design .replay {
+    display: block;
+    height: 6em;
+    width: 6em;
+    position: absolute;
+    text-indent: -9999px;
+}
+
+#startQuizz .replay {
+    bottom: 2em;
+    left: 205px;
+}
+
+#startQuizz .replay:hover, #quizz_design .replay:hover {
+    
+    background: url('../img/quizz/btn_iphone.png');    
 }
 
 /////////////////////////////////////////////////////////////////////////// PAGE QUIZZ GAME /// QUIZZ 
+
+#quizz_design .replay {
+    bottom: 2em;
+    left: 204px;
+    z-index: 5;
+}
+
+#quizz_design .replay:hover {
+    z-index: 900;
+}
+
+#quizz_design {
+    width: 500px;
+    margin: 0 auto;
+    padding: 120px 0 130px 0;
+    background-image: url('../img/quizz/iphone.png');
+    position: relative;
+}
+
+#quizz_design h1 {
+    display: none;
+}
 
 #quizz {
     width: 400px;
@@ -708,7 +864,7 @@ footer {
 }
 
 #quizz form {
-    padding-top: 4em;
+    padding-top: 2.5em;
 }
 
 #quizz fieldset {
@@ -719,8 +875,8 @@ footer {
 }
 
 #quizz h2 {
-    font-size: 32px;
-    padding: 0.2em 0.5em;
+    font-size: 3.5em;
+    padding: 0 0.5em;
     margin: 0;
     position: relative;
     z-index: 10;
@@ -756,6 +912,7 @@ footer {
     margin-bottom: -1em;
     padding-top: 2em;
     background: url('../img/herbe.png') no-repeat;
+    z-index: 10;
 }
 
 #quizz #lab p {
@@ -822,6 +979,33 @@ footer {
 
 }
 
+////////////////////////////////////////// end game
+
+
+#endQuizz  {
+    display: block;
+    width: 260px;
+    margin: 8em auto 0 auto;
+    font-size: 1.4em;
+    text-align: center;
+    font-weight: bold;
+}
+
+#endQuizz em {
+    .column(2);
+    display: block;
+    font-size: 1.8em;
+    margin: 0.5em auto 0 auto;
+}
+
+#good {
+    color: green;
+}
+
+#bad {
+    color: red;
+}
+
 ////////////////////////////////////////// SON
 
 #son {
@@ -882,3 +1066,49 @@ footer {
     opacity: 0.85;
 }
 
+//////////////////////////////////////////////////////////////// Home page
+
+#home {
+    .column(10);
+    display: block;
+    margin: 1em auto 0 auto;
+}
+
+#home h2 {
+    margin: 0.5em auto;
+    font-size: 2.8em;
+}
+
+#home p {
+    .column(9);
+    display: block;
+    margin: 0 auto 2em auto;
+    text-align: justify;
+    text-indent: 2em;
+    line-height: 2;
+}
+
+//////////////////////////////////////////////////////////////////// LOGO
+
+#logo_explo {
+    position: absolute;
+    bottom: 5em;
+    left: -14em;
+}
+
+#logo_prov {
+    position: absolute;
+    bottom: 7.5em;
+    right: -15em;
+}
+
+///////////////////////////////////////////////////////////////////  ECOGAME
+
+#ecoGame h2 {
+    font-size: 2.5em;
+}
+
+#boxGame {
+    width: 600px;
+    margin: 0 auto;
+}
