@@ -79,7 +79,7 @@
         jQuery.ajax({
                 type: "POST",
 		url: url_quizz,
-		data: {"user_id" : nUser, "num_quest" : nQuest, "result" : nResult, "status" : sStatut, "dir" : "update"},
+		data: { "user_id" : nUser, "num_quest" : nQuest, "result" : nResult, "status" : sStatut, "dir" : "update"},
 		success: function (data) {
 			console.log(data);
 		}

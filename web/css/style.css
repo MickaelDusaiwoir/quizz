@@ -53,8 +53,8 @@ body {
   margin: 0;
 }
 h1,
-h2,
-h3 {
+#layout_game h2,
+#layout_game h3 {
   font-family: 'JennaSueRegular';
 }
 footer {
@@ -696,17 +696,17 @@ p {
   border: 1px solid #666;
   color: #eee;
 }
-nav ul {
+#layout_game nav ul {
   margin: 0.5em 0;
 }
-nav li {
+#layout_game nav li {
   display: inline-block;
   position: relative;
   height: 6em;
   width: 16.5em;
   background-image: url('../img/menu.png');
 }
-nav li a {
+#layout_game nav li a {
   display: block;
   padding: 2.7em 0 0.7em 0;
   text-align: center;
@@ -715,21 +715,21 @@ nav li a {
   color: #59f;
   text-shadow: 1px 1px 0px #15b;
 }
-nav li a:hover {
+#layout_game nav li a:hover {
   color: #ffcc33;
   text-shadow: 1px 1px 0px #c60;
 }
-nav li:first-child {
+#layout_game nav li:first-child {
   top: 10em;
   left: 1.5em;
 }
-nav li:nth-child(2) {
+#layout_game nav li:nth-child(2) {
   left: 8em;
 }
-nav li:nth-child(3) {
+#layout_game nav li:nth-child(3) {
   left: 24em;
 }
-nav li:last-child {
+#layout_game nav li:last-child {
   left: 32em;
   top: 10em;
 }

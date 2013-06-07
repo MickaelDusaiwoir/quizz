@@ -273,7 +273,7 @@ class Admin extends CI_Controller {
             
             $dataListe['erreur'] = $erreur;
             $dataListe['save'] = $saveDataUser;
-            $dataListe['donnees'] = $this->M_Admin->getUser($id);            
+            $dataListe['donnees'] = $this->M_Admin->getOne($id, 'users');            
             $dataLayout['titre'] = 'Connection à l\'administartion';
             $dataLayout['vue'] = $this->load->view('user', $dataListe, true);
             $this->load->view('layoutAdmin', $dataLayout);
