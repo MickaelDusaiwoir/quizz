@@ -66,6 +66,24 @@
             return TRUE;
         }
         
+        public function stats ($start, $end) 
+        {
+            // Nombre de joueur par jour.
+            $req = 'SELECT count(id) FROM participants WHERE `date`>="'.$start.'" AND `date`<="'.$end.'";';
+            $query = $this->db->query($req);
+            $nbPlayer = $query->result_array();
+
+            // Nombre de vues par jour.
+            $req = 'SELECT count(id) FROM participants WHERE `date`>="'.$start.'" AND `date`<="'.$end.'" AND `status`="fini";';
+            $query = $this->db->query($req);
+            $nbFini = $query->result_array();
+
+            return array(
+                'nbPlayer' => $nbPlayer[0]['count(id)'], 
+                'nbFini' => $nbFini[0]["count(id)"]
+            ); 
+        }       
+        
     }
 
 

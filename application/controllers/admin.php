@@ -383,6 +383,29 @@ class Admin extends CI_Controller {
         }
     }
     
+    public function stats () {
+        
+        $this->load->model('M_Admin');
+        
+        $today = mktime(0, 0, 0, date("m"), date("d"), date("Y"));
+        $start = $today - (86400 * 6);
+        $end = $start + 86400;
+
+        for ( $i = 0; $i < 7; $i++ )
+        {
+            $dataList['stats'][$i] = $this->M_Admin->stats($start, $end);
+            $dataList['stats'][$i]['date'] = date('d-m-Y ', $start);
+
+            $start += 86400;
+            $end += 86400;
+        }
+                    
+        $dataLayout['titre'] = 'Administartion - Statistique';
+        $dataLayout['vue'] = $this->load->view('stats', $dataList, true);
+        $this->load->view('layoutAdmin', $dataLayout);
+        
+    }
+    
 }
 
 ?>
