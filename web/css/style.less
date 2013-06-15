@@ -170,7 +170,7 @@ h1, h2, h3, h4, h5, p {
 
 #layout_admin #admin_menu ul {
     overflow: hidden;
-    .column(7);
+    .column(9);
     display: block;
     margin: 0.5em auto 2em auto;
     padding: 0;
@@ -737,6 +737,61 @@ h1, h2, h3, h4, h5, p {
     left: 32em;
     top: 10em;
 }
+
+//////////////////////////////////////////////////////////// PAGE STATISTIQUE
+
+#stats {
+    background: url('../img/fondG.png') repeat;
+    margin: 0;
+
+    border-radius : 5px;
+    -moz-border-radius : 5px;
+    -webkit-border-radius : 5px;
+
+    padding: 1em;
+    .column(8);
+    display: block;
+    margin: 0 auto;
+}
+
+#stats h2 {
+    margin-top: 0;
+}
+
+#quizzStats {
+    display: block;
+    margin: 0 auto;  
+    padding-left: 20px;
+}
+
+#quizzStats th, #quizzStats td {
+    .column(2);
+    margin: 0 auto;
+    text-align: center;
+    border-right: 2px solid #aaa;
+    padding: 0;
+}
+
+#quizzStats th:last-child, #quizzStats td:last-child {
+    border: none;
+}
+
+#quizzStats td, #quizzStats tbody th {
+    padding: 0.5em 0;
+}
+
+#quizzStats tbody tr:nth-child(odd) {
+    background-color: #ccc;
+}
+
+#quizzStats thead th {
+    border: none;
+}
+
+#quizzStats thead, #quizzStats tbody {
+    border: 1px solid #aaa;
+}
+
 
 ////////////////////////////////////////////////////////////   PAGE QUIZZ GAME ////  START QUIZZ
 

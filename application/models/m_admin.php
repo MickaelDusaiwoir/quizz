@@ -77,10 +77,16 @@
             $req = 'SELECT count(id) FROM participants WHERE `date`>="'.$start.'" AND `date`<="'.$end.'" AND `status`="fini";';
             $query = $this->db->query($req);
             $nbFini = $query->result_array();
+            
+            // Score moyen
+            $req = 'SELECT AVG(bonne_reponse) FROM participants WHERE `date`>="'.$start.'" AND `date`<="'.$end.'" AND `status`="fini";';
+            $query = $this->db->query($req);
+            $avgRep = $query->result_array();
 
             return array(
                 'nbPlayer' => $nbPlayer[0]['count(id)'], 
-                'nbFini' => $nbFini[0]["count(id)"]
+                'nbFini' => $nbFini[0]["count(id)"],
+                'avgRep' => $avgRep[0]['AVG(bonne_reponse)']
             ); 
         }       
         
